@@ -38,10 +38,10 @@ public:
             return nums2[start2 + k - 1];
         }
         if(k == 1){
-            return nums1[start1] < nums2[start2] ? nums1[start1] : nums2[start2];
+            return min(nums1[start1], nums2[start2]);
         }
-        int i = (start1 + len1 - 1) < (start1 + k / 2 -1) ? (start1 + len1 - 1) : (start1 + k / 2 - 1);
-        int j = (start2 + len2 - 1) < (start2 + k / 2 -1) ? (start2 + len2 - 1) : (start2 + k / 2 - 1);
+        int i = start1 + min(len1, k / 2) - 1;
+        int j = start2 + min(len2, k / 2) - 1;
         if(nums1[i] > nums2[j]){
             return getKth(nums1, start1, end1, nums2, j + 1, end2, k - (j - start2 + 1));
         }else{
